@@ -1,0 +1,6 @@
+[package]
+name = "soji"
+version = "0.1.0"
+authors = ["Joe Cannatti <joecannatti@gmail.com>"]
+
+[dependencies]
