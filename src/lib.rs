@@ -1,2 +1,4 @@
-pub mod commands;
-pub mod tests;
+pub mod command;
+
+#[cfg(test)]
+mod unit_tests;
