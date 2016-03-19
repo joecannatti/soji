@@ -6,5 +6,6 @@ authors = ["Joe Cannatti <joecannatti@gmail.com>"]
 [[bin]]
 name = "soji"
 doc = false
+test = false
 
 [dependencies]
