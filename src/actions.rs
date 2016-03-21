@@ -1,7 +1,8 @@
 use super::command;
+use super::datastore;
 
 pub trait Action {
-    fn execute(&self) -> ();
+    fn execute(&self) -> Result<bool, String>;
 }
 
 pub struct StartTaskAction {
@@ -9,8 +10,11 @@ pub struct StartTaskAction {
 }
 
 impl Action for StartTaskAction {
-    fn execute(&self) -> () {
-        println!("Start Action Executed");
+    fn execute(&self) -> Result<bool, String> {
+        let details = vec![self.task_name.to_string()];
+        let name = "start".to_string();
+        datastore::store_event(name, details).expect("Write failed");
+        Ok(true)
     }
 }
 

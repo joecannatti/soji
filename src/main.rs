@@ -13,5 +13,5 @@ fn main() {
     let action = actions::ActionFactory::action_for_command(command);
     match action {
         actions::Actions::StartTaskAction(start_action) => start_action.execute()
-    }
+    }.expect("action failed");
 }
