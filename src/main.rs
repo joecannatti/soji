@@ -11,7 +11,9 @@ fn main() {
 
     let command = command::command_from_args(user_args);
     let action = actions::ActionFactory::action_for_command(command);
-    match action {
-        actions::Actions::StartTaskAction(start_action) => start_action.execute()
+    let result = match action {
+        actions::Actions::StartTaskAction(start_action) => start_action.execute(),
+        actions::Actions::StatusAction(status_action) => status_action.execute()
     }.expect("action failed");
+    println!("{}", result);
 }
