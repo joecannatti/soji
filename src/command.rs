@@ -13,7 +13,7 @@ pub struct Command {
 
 pub fn command_from_args(args: Vec<String>) -> Command {
     if args.len() < 1 {
-        panic!("no command specificed");
+        Command { name: "status".to_string(), args: vec![] }
     } else if args.len() == 1 {
         Command { name: args[0].to_string(), args: vec![] }
     } else {
