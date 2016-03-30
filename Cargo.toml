@@ -9,3 +9,4 @@ doc = false
 test = false
 
 [dependencies]
+chrono = "0.2"
