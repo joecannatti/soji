@@ -27,7 +27,10 @@ pub fn store_event(name: String, details: Vec<String>) -> io::Result<()> {
 }
 
 pub fn current_task() -> Result<String, String>{
-    let f = fs::File::open("/tmp/.soji_data.csv").expect("read failed");
+    let f = match fs::File::open("/tmp/.soji_data.csv") {
+        Err(_) => return Ok("".to_string()),
+        Ok(file) => file
+    };
     let f = BufReader::new(f);
     let mut status : String = "".to_string();
     for line in f.lines() {
