@@ -15,7 +15,7 @@ pub fn store_event(name: String, details: Vec<String>) -> io::Result<()> {
                 .write(true)
                 .create(true)
                 .append(true)
-                .open("/tmp/.soji_data.csv")
+                .open(env!("HOME").to_string() + "/.soji/.soji_data.csv")
                 .expect("couldn't open data file");
     let mut row_data = details.to_vec();
     row_data.insert(0, name);
@@ -27,7 +27,7 @@ pub fn store_event(name: String, details: Vec<String>) -> io::Result<()> {
 }
 
 pub fn current_task() -> Result<String, String>{
-    let f = match fs::File::open("/tmp/.soji_data.csv") {
+    let f = match fs::File::open(env!("HOME").to_string() + "/.soji/.soji_data.csv") {
         Err(_) => return Ok("".to_string()),
         Ok(file) => file
     };
