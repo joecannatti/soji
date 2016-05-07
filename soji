@@ -8,4 +8,4 @@ elif [[ $action == 'week' ]]; then
   action='eng-notebook-week'
 fi
 
-$SOJI_DIR/$action.sh "$2" "$3" "$4"
+$SOJI_DIR/$action "$2" "$3" "$4"
