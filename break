@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-$SOJI_DIR/dim
-echo "break,break,`date +'%s'`" >> $SOJI_DIR/event_logs/events-`date +%Y-%m-%d`.csv
-crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` $SOJI_DIR/bright"; } | crontab -
