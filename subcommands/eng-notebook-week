@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-note_dir=$SOJI_NOTE_DIR
+note_dir=$SOJI_NOTES_DIR
 
 
 day_of_week=`date +%u`

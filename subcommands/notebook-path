@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+echo $SOJI_NOTES_DIR/engineering-notebook-`date +%Y-%m-%d`.md
