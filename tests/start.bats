@@ -29,3 +29,12 @@ teardown() {
     crontab -l | grep break
     [ $? -eq 0 ]
   }
+
+@test "updates the status" {
+    run soji status
+    [ "$output" = "" ]
+    run soji start 'new task'
+    run soji status
+    echo $output
+    [ "$output" = "new task -- 0 min" ]
+  }
