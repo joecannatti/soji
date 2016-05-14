@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "lunch,lunch,`date +'%s'`" >> $SOJI_EVENTS_DIR/events-`date +%Y-%m-%d`.csv
-echo -e "\n### LUNCH -- `date +'%I:%M%p'`" >> "$SOJI_NOTES_DIR/engineering-notebook-`date +%Y-%m-%d`.md"
+echo "lunch,lunch,`date +'%s'`" >> `soji events-path`
+echo -e "\n### LUNCH -- `date +'%I:%M%p'`" >> "`soji notebook-path eng"

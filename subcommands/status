@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-todays_data_file_path="$SOJI_EVENTS_DIR/events-$(date +%Y-%m-%d).csv"
+todays_data_file_path=`soji events-path`
 if [ -e $todays_data_file_path ]; then
   task=`cat $todays_data_file_path | egrep "^(start|break|lunch)" | tail -1 |awk -F, '{print $2}' | awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}' `
   start_time=`cat $todays_data_file_path | egrep "^(start|break|lunch)" | tail -1 | awk -F, '{print $3}'`

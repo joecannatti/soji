@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-$EDITOR $SOJI_EVENTS_DIR/events-`date +%Y-%m-%d`.csv
+$EDITOR `soji events-path`

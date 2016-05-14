@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "start,$1,`date +'%s'`" >> $SOJI_EVENTS_DIR/events-`date +%Y-%m-%d`.csv
+echo "start,$1,`date +'%s'`" >> `soji events-path`
 echo -e "\n### Pom -- $1 -- `date +'%I:%M%p'`" >> `soji notebook-path eng`
 $SOJI_DIR/soji schedule_break
 $SOJI_DIR/soji schedule_notification "20 min left! On the task $1" 5
