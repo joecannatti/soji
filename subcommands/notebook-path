@@ -1,2 +1,10 @@
 #!/usr/bin/env bash
-echo $SOJI_NOTES_DIR/engineering-notebook-`date +%Y-%m-%d`.md
+
+type=${1:-eng}
+days_ago=${2:-0}
+
+if [[ $type == 'eng' ]]; then
+  echo $SOJI_NOTES_DIR/engineering-notebook-`date +%Y-%m-%d --date "$days_ago days ago"`.md
+elif [[ $type == 'regular' ]]; then
+  echo $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.md
+fi

@@ -3,7 +3,7 @@
 note_dir=$SOJI_NOTES_DIR
 
 if [[ "$1" == "" ]]; then
- pushd $SOJI_NOTES_DIR && vi note-`date +%Y-%m-%d-at-%H:%M`.md && popd
+ $EDITOR `soji notebook-path regular`
 else
- pushd $SOJI_NOTES_DIR && vi "$1".md && popd
+ $EDITOR $SOJI_NOTES_DIR/"$1".md
 fi

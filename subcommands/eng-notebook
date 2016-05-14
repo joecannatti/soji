@@ -1,4 +1,3 @@
 #! /usr/bin/env bash
 
-note_dir=$SOJI_NOTES_DIR
-pushd $note_dir && vi engineering-notebook-`date +%Y-%m-%d`.md && popd
+$EDITOR `soji notebook-path eng`
