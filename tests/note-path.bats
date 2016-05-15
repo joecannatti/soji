@@ -1,7 +1,5 @@
 #!/usr/bin/env bats
 
-. tests/support.sh
-
 @test "returns the eng log for the day" {
     run soji note-path log
     [[ $output =~ engineering-log-`date +%Y-%m-%d`.md ]]
