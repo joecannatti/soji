@@ -2,16 +2,6 @@
 
 . tests/support.sh
 
-setup() {
-  reset_test_env
-}
-
-teardown() {
-  reset_test_env
-}
-
-
-
 @test "creates event file if it doesn't exist" {
     [ `ls -1 $SOJI_EVENTS_DIR | wc -l` -eq 0 ]
     soji start 'aoeu'

@@ -7,3 +7,11 @@ function reset_test_env {
   rm -rf $SOJI_DIR/tests/event_logs/*
   rm -rf $SOJI_DIR/tests/notes/*
 }
+
+setup() {
+  reset_test_env
+}
+
+teardown() {
+  reset_test_env
+}
