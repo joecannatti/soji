@@ -10,7 +10,7 @@
 
 @test "writes a row to the existing file" {
     soji start 'this row should be there'
-    cat $SOJI_EVENTS_DIR/*.csv | grep 'start,this row should be there,'
+    cat `soji events-path` | grep 'start,this row should be there,'
     [ $? -eq 0 ]
   }
 
@@ -31,6 +31,6 @@
 
 @test "writes a the start of the task to the log note file" {
     soji start Panda
-    cat $SOJI_NOTES_DIR/*.md | grep '### Pom -- Panda'
+    cat `soji note-path log` | grep '### Pom -- Panda'
     [ $? -eq 0 ]
   }

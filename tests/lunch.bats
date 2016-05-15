@@ -10,12 +10,12 @@
 
 @test "writes a lunch row to the existing event file" {
     soji lunch
-    cat $SOJI_EVENTS_DIR/*.csv | grep 'lunch,lunch,'
+    cat `soji events-path` | grep 'lunch,lunch,'
     [ $? -eq 0 ]
   }
 
 @test "writes a lunch log note file" {
     soji lunch
-    cat $SOJI_NOTES_DIR/*.md | grep '### LUNCH'
+    cat `soji note-path log` | grep '### LUNCH'
     [ $? -eq 0 ]
   }
