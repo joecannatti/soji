@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "lunch,lunch,`date +'%s'`" >> `soji events-path`
-echo -e "\n### LUNCH -- `date +'%I:%M%p'`" >> "`soji note-path eng"
+echo -e "\n### LUNCH -- `date +'%I:%M%p'`" >> "`soji note-path log`"

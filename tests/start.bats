@@ -28,3 +28,9 @@
     echo $output
     [ "$output" = "new task -- 0 min" ]
   }
+
+@test "writes a the start of the task to the log note file" {
+    soji start Panda
+    cat $SOJI_NOTES_DIR/*.md | grep '### Pom -- Panda'
+    [ $? -eq 0 ]
+  }
