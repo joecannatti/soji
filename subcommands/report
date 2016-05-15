@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-todays_note_file=`soji notebook-path`
+todays_note_file=`soji note-path log`
 
 if [ -e $todays_note_file ]; then
   poms=`cat $todays_note_file | grep "### Pom" | wc -l`

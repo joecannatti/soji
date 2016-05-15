@@ -2,8 +2,4 @@
 
 note_dir=$SOJI_NOTES_DIR
 
-if [[ "$1" == "" ]]; then
- $EDITOR `soji notebook-path regular`
-else
- $EDITOR $SOJI_NOTES_DIR/"$1".md
-fi
+$EDITOR -o `soji note-path "$@"`

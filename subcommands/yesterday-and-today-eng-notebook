@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
 note_dir=$SOJI_NOTES_DIR
-$EDITOR -o `soji notebook-path eng 1` `soji notebook-path eng 0`
+$EDITOR -o `soji note-path log 1` `soji note-path log 0`

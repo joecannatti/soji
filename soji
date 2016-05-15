@@ -5,7 +5,7 @@ action=$1
 if [[ $action == 'yn' ]]; then
   action='yesterday-and-today-eng-notebook'
 elif [[ $action == 'week' ]]; then
-  action='eng-notebook-week'
+  action='note week'
 fi
 
-$SOJI_DIR/subcommands/$action "$2" "$3" "$4" "$5"
+$SOJI_DIR/subcommands/$action "${@:2}"
