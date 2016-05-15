@@ -1,5 +1,5 @@
 target
-.sw*
+*.sw*
 event_logs/*.csv
 tests/event_logs
 tests/notes
