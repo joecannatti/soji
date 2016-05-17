@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "meditation,meditation,`date +'%s'`" >> $SOJI_EVENTS_DIR/events-`date +%Y-%m-%d`.csv
+echo -e "\n### Meditation -- $1 -- `date +'%I:%M%p'`" >> `soji note-path log`

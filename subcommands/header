@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+#prompt
+RED="\[\033[1;31m\]"
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[1;32m\]"
+WHITE="\[\033[1;97m\]"
+NOCOLOR="\[\033[1;0m\]"
+
+todays_note_file=`soji note-path log`
+pom_count=`cat $todays_note_file | grep "### Pom" | wc -l`
+poms=""
+if [ $pom_count -lt 4 ]; then
+  poms="$WHITE pomodoros $RED $pom_count"
+elif [ $pom_count -lt 8 ]; then
+  poms="$WHITE pomodoros $YELLOW $pom_count"
+else
+  poms="$WHITE pomodoros $GREEN $pom_count"
+fi
+
+lunch=""
+cat $todays_note_file | grep "### LUNCH" >> /dev/null
+if [[ $? == 0 ]]; then
+  lunch="$WHITE lunch $GREEN✓"
+else
+  lunch="$WHITE lunch $RED✗"
+fi
+
+meditation=""
+cat $todays_note_file | grep "### Meditation" >> /dev/null
+if [[ $? == 0 ]]; then
+  meditation="$WHITE meditation $GREEN✓"
+else
+  meditation="$WHITE meditation $RED✗"
+fi
+
+journal=""
+if [ -e `soji note-path journal` ]; then
+  journal="$WHITE journal $GREEN✓"
+else
+  journal="$WHITE journal $RED✗"
+fi
+
+echo "\n$journal $meditation $lunch $poms \n$RED \$(soji status) $YELLOW[\@] $RED\W $GREEN\$(parse_git_branch)$RED$ $NOCOLOR"
