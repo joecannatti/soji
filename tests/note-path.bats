@@ -24,3 +24,8 @@
     run soji note-path test-note-name
     [[ $output =~ test-note-name.md ]]
   }
+
+@test "creates a journal note" {
+    run soji note-path journal
+    [[ $output =~ journal-`date +%Y-%m-%d` ]]
+  }
