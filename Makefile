@@ -11,5 +11,5 @@ prepare_for_tests:
 	rm -f tests/event_logs/*
 	rm -f tests/notes/*
 
-clean:
+clean: prepare_for_tests
 
