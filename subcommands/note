@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-note_dir=$SOJI_NOTES_DIR
-
 $EDITOR -o `soji note-path "$@"`

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 soji log "start" "$1"
-echo -e "\n### Pom -- $1 -- `date +'%I:%M%p'`" >> `soji note-path log`
 $SOJI_DIR/soji schedule_break
 $SOJI_DIR/soji schedule_notification "20 min left! On the task $1" 5
 $SOJI_DIR/soji schedule_notification "15 min left! On the task $1" 10

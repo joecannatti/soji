@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
 soji log "meditation" "meditation"
-echo -e "\n### Meditation -- $1 -- `date +'%I:%M%p'`" >> `soji note-path log`
