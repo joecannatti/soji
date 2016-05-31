@@ -6,6 +6,8 @@ if [[ $action == 'yn' ]]; then
   action='yesterday-and-today-eng-notebook'
 elif [[ $action == 'week' ]]; then
   action='note week'
+elif [[ $action == '' ]]; then
+  action='note log'
 fi
 
 $SOJI_DIR/subcommands/$action "${@:2}"
