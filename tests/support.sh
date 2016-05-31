@@ -4,8 +4,8 @@ function clear_cron {
 
 function reset_test_env {
   clear_cron
-  rm -rf $SOJI_DIR/tests/event_logs/*
   rm -rf $SOJI_DIR/tests/notes/*
+  $SOJI_DIR/soji bright
 }
 
 #setup() {

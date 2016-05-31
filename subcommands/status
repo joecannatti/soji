@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-todays_data_file_path=`soji events-path`
-if [ -e $todays_data_file_path ]; then
-  task=`cat $todays_data_file_path | egrep "^(start|break|lunch|meditation)" | tail -1 |awk -F, '{print $2}' | awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}' `
-  start_time=`cat $todays_data_file_path | egrep "^(start|break|lunch|meditation)" | tail -1 | awk -F, '{print $3}'`
-  seconds=`expr $(date +'%s') - $start_time`
-  minutes=`expr $seconds / 60`
-  echo "$task -- $minutes min"
+if [ -e $(soji note-path log) ]; then
+  task=`cat $(soji note-path log) | egrep "^### (start|break|lunch|meditation)" | tail -1 | awk -F'-' '{print $3}' |  awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
+  task=`echo $task | xargs`
+  start_time=`cat $(soji note-path log) | egrep "^### (start|break|lunch|meditation)" | tail -1 | awk -F'-' '{print $5}'`
+  if [ "$start_time" != "" ]; then
+    seconds=`expr $(date +'%s') - $(date +'%s' --date $start_time)`
+    minutes=`expr $seconds / 60`
+    echo "$task -- $minutes min"
+  fi
 fi

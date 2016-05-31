@@ -2,15 +2,9 @@
 
 . tests/support.sh
 
-@test "creates event file if it doesn't exist" {
-    [ `ls -1 $SOJI_EVENTS_DIR | wc -l` -eq 0 ]
+@test "writes a break log note file" {
     soji break
-    [ `ls -1 $SOJI_EVENTS_DIR | wc -l` -eq 1 ]
-  }
-
-@test "writes a break row to the existing event file" {
-    soji break
-    cat `soji events-path` | grep 'break,break,'
+    cat `soji note-path log` | grep '### break'
     [ $? -eq 0 ]
   }
 
