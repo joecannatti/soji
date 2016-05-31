@@ -16,6 +16,6 @@
 
 @test "writes a lunch log note file" {
     soji lunch
-    cat `soji note-path log` | grep '### LUNCH'
+    cat `soji note-path log` | grep '### lunch'
     [ $? -eq 0 ]
   }
