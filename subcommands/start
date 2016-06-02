@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 soji log "start" "$1"
-$SOJI_DIR/soji schedule_break
-$SOJI_DIR/soji schedule_notification "20 min left! On the task $1" 5
-$SOJI_DIR/soji schedule_notification "15 min left! On the task $1" 10
-$SOJI_DIR/soji schedule_notification "10 min left! On the task $1" 15
-$SOJI_DIR/soji schedule_notification "ONLY 5 min left! On the task $1" 20
+soji schedule_break
+soji schedule_notification "20 min left! On the task $1" 5
+soji schedule_notification "15 min left! On the task $1" 10
+soji schedule_notification "10 min left! On the task $1" 15
+soji schedule_notification "ONLY 5 min left! On the task $1" 20

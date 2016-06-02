@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -z $SOJI_DIR ]; then
+  . ~/.config/soji/sojirc
+fi
+
 action=$1
 
 if [[ $action == 'yn' ]]; then

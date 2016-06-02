@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-$SOJI_DIR/soji dim
+soji dim
 soji log "break" "break"
-crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` $SOJI_DIR/soji bright"; } | crontab -
+crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` soji bright"; } | crontab -
