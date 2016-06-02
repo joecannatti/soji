@@ -18,7 +18,5 @@ install:
 	echo "export SOJI_NOTES_DIR=~/.config/soji/notes" >> ~/.config/soji/sojirc
 	ln -fs ~/.config/soji/soji /usr/bin/soji
 
-
-
 clean: prepare_for_tests
 

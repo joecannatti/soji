@@ -41,4 +41,4 @@ else
   journal="$WHITE journal $RED✗"
 fi
 
-echo "\n$journal $meditation $lunch $poms \n$RED \$(soji status) $YELLOW[\@] $RED\W $GREEN\$(parse_git_branch)$RED$ $NOCOLOR"
+echo "\n$journal $meditation $lunch $poms \n"
