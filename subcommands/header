@@ -41,4 +41,7 @@ else
   journal="$WHITE journal $RED✗"
 fi
 
-echo "\n$journal $meditation $lunch $poms \n"
+meeting_count=`cat $todays_note_file 2> /dev/null | grep -i "### meeting" | wc -l`
+meetings="$WHITE meetings $GREEN $meeting_count"
+
+echo "\n$journal $meditation $lunch $poms $meetings\n$RED \$(soji status) $YELLOW[\@] $RED\W $GREEN\$(parse_git_branch)$RED$ $NOCOLOR"
