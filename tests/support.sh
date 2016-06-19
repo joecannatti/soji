@@ -1,5 +1,5 @@
 function clear_cron {
-  crontab -l | grep -v soji/soji | crontab
+  crontab -l | grep -v soji | crontab
 }
 
 function reset_test_env {
