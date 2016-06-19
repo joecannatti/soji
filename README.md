@@ -1,4 +1,4 @@
-# Soji
+# Soji [![Build Status](https://travis-ci.org/joecannatti/soji.svg?branch=master)](https://travis-ci.org/joecannatti/soji)
 
 Soji is a terminal based tool for helping you stay mindful at work.
 
