@@ -29,7 +29,7 @@ sudo make install
 
 ### Setup your prompt
 
-Soji is design to interact with you primarily through through command prompt (as pictured above). 
+Soji is design to interact with you primarily through your command prompt (as pictured above). 
 
 The standard prompt setup is built into soji. You just need to add to you `.bashrc` or `.bash_profile`
 
