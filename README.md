@@ -148,6 +148,10 @@ $ soji start 'Write README.md'
 
 > Begins unguided meditation 
 
+* `soji note journal`
+
+> Write a journal entry for the day
+
 
 ### Tech Stuff
 
