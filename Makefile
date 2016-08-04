@@ -16,7 +16,7 @@ install:
 	>~/.config/soji/sojirc
 	echo "export SOJI_DIR=~/.config/soji" >> ~/.config/soji/sojirc
 	echo "export SOJI_NOTES_DIR=~/.config/soji/notes" >> ~/.config/soji/sojirc
-	ln -fs ~/.config/soji/soji /usr/bin/soji
+	sudo ln -fs ~/.config/soji/soji /usr/bin/soji
 
 configure_prompt:
 	echo 'RED="\\[\\033[1;31m\\]"' >> ~/.bash_profile
