@@ -3,7 +3,7 @@
 . tests/support.sh
 
 @test "writes a lunch log note file" {
-    soji lunch
-    cat `soji note-path log` | grep '** lunch'
+    $SOJI_DIR/soji lunch
+    cat `$SOJI_DIR/soji note-path log` | grep '** lunch'
     [ $? -eq 0 ]
   }
