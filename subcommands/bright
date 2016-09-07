@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-for disp in `xrandr --current | grep '(normal' | cut -d' ' -f 1`; do
-    xrandr --output $disp --display ":0" --brightness 1 || true
+for disp in `DISPLAY=:0 xrandr --verbose | grep '(normal' | cut -d' ' -f 1`; do
+    DISPLAY=:0 xrandr --output $disp --display ":0" --brightness 1 || true
 done
 
 
