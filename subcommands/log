@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo -e "\n### $1 -- $2 -- `date +'%I:%M%p'`" >> "`soji note-path log`"
+echo -e "\n** $1 -- $2 -- `date +'%I:%M%p'`" >> "`soji note-path log`"

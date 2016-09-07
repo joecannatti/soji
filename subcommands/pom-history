@@ -3,7 +3,7 @@
 for days_ago in `seq 1000 0`; do
   note_file=`soji note-path log $days_ago`
   if [ -e $note_file ]; then
-    pom_count=`cat $note_file 2> /dev/null | grep -i "### start" | wc -l`
+    pom_count=`cat $note_file 2> /dev/null | grep -i "** start" | wc -l`
     echo $pom_count
   fi
 done

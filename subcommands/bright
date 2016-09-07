@@ -1,5 +1,7 @@
-#!/usr/bin/env bash
-xrandr --output eDP1 --display ":0" --brightness 1
-xrandr --output HDMI1 --display ":0" --brightness 1
-xrandr --output eDP-1 --display ":0" --brightness 1
-xrandr --output DP-1 --display ":0" --brightness 1
+#! /usr/bin/env bash
+
+for disp in `xrandr --current | grep '[^s]connected' | cut -d' ' -f 1`; do
+    xrandr --output $disp --display ":0" --brightness 1
+done
+
+

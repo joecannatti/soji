@@ -4,14 +4,14 @@ type=${1:-ts}
 days_ago=${2:-0}
 
 if [[ $type == 'log' ]]; then
-  echo $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$days_ago days ago"`.md
+  echo -n $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$days_ago days ago"`.org
 elif [[ $type == 'ts' ]]; then
-  echo $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.md
+  echo -n $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.org
 elif [[ $type == 'journal' ]]; then
-  echo $SOJI_NOTES_DIR/journal-`date +%Y-%m-%d`.md
+  echo -n $SOJI_NOTES_DIR/journal-`date +%Y-%m-%d`.org
 elif [[ $type == 'week' ]]; then
   day_of_week=`date +%u`
-  for i in `seq 0 $(expr $day_of_week - 1)`; do echo $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$i days ago"`.md; done | xargs
+  for i in `seq 0 $(expr $day_of_week - 1)`; do echo $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$i days ago"`.org; done | xargs
 else
-  echo $SOJI_NOTES_DIR/"$1".md
+  echo -n $SOJI_NOTES_DIR/"$1".org
 fi

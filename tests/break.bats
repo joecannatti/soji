@@ -4,7 +4,7 @@
 
 @test "writes a break log note file" {
     soji break
-    cat `soji note-path log` | grep '### break'
+    cat `soji note-path log` | grep '** break'
     [ $? -eq 0 ]
   }
 

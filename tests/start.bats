@@ -24,6 +24,6 @@
 
 @test "writes a the start of the task to the log note file" {
     run soji start Panda
-    cat `soji note-path log` | grep '### start -- Panda'
+    cat `soji note-path log` | grep '** start -- Panda'
     [ $? -eq 0 ]
   }
