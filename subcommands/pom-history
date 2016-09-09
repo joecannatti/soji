@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-for days_ago in `seq 1000 0`; do
-  note_file=`soji note-path log $days_ago`
-  if [ -e $note_file ]; then
-    pom_count=`cat $note_file 2> /dev/null | grep -i "** start" | wc -l`
-    echo $pom_count
-  fi
-done
+for days_ago in `seq 1000 -1 0`; do
+    note_file=`soji note-path log $days_ago`
+    if [ -e $note_file ]; then
+	file_date=`echo $note_file | sed 's/.*engineering-log-\(.*\)/\1/' | sed 's/.org$//'`
+	day_of_week=`date +%A --date $file_date`
+	pom_count=`cat $note_file 2> /dev/null | grep -i "** start" | wc -l`
+	echo -e "$file_date\t$day_of_week\t$pom_count"
+    fi
+done | grep -v Saturday | grep -v Sunday
