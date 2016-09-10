@@ -7,17 +7,16 @@
 
 (define (load_env_vars)
   (if (eq? (getenv "SOJI_DIR") #f)
-      (begin
-	(load (string-append (getenv "HOME") "/.config/soji/sojirc.scm"))
-	(setenv "SOJI_DIR" SOJI_DIR)
-	(setenv "SOJI_NOTES_DIR" SOJI_NOTES_DIR))
-      (begin
-	(set! SOJI_DIR (getenv "SOJI_DIR"))
-	(set! SOJI_NOTES_DIR (getenv "SOJI_NOTES_DIR")))))
+      (load-sojirc)))
+
+(define (load-sojirc)
+  (load (string-append (getenv "HOME") "/.config/soji/sojirc.scm"))
+  (setenv "SOJI_DIR" SOJI_DIR)
+  (setenv "SOJI_NOTES_DIR" SOJI_NOTES_DIR))
 
 (define (bind_global_config)
-  (define SOJI_DIR (getenv "SOJI_DIR"))
-  (define SOJI_NOTES_DIR  (getenv "SOJI_NOTES_DIR"))
+  (set! SOJI_DIR (getenv "SOJI_DIR"))
+  (set! SOJI_NOTES_DIR  (getenv "SOJI_NOTES_DIR"))
   '())
   
 (define (default-args lst)
@@ -29,14 +28,17 @@
 (define (quote-args lst)
   (map quote-string lst))
 
+(define (system-command-arg-string lst)
+  (string-join (list-tail (quote-args (default-args lst)) 1)))
+
+(define (system-command lst)
+  (string-append (subcommands-dir-path)
+		 (system-command-arg-string lst)))
+
+(define (subcommands-dir-path)
+  (string-append SOJI_DIR "/subcommands/"))
 
 (define (main args)
   (load_env_vars)
   (bind_global_config)
-  (system
-   (string-append SOJI_DIR "/subcommands/"
-		  (string-join
-		   (list-tail
-		    (quote-args 
-		     (default-args args))
-		    1)))))
+  (system (system-command args)))
