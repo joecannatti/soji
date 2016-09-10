@@ -1,17 +1,42 @@
-#!/usr/bin/env bash
+#!/usr/bin/guile \
+-e main -s
+!#
 
-if [ -z $SOJI_DIR ]; then
-  . ~/.config/soji/sojirc
-fi
+(define SOJI_DIR "")
+(define SOJI_NOTES_DIR "")
 
-action=$1
+(define (load_env_vars)
+  (if (eq? (getenv "SOJI_DIR") #f)
+      (begin
+	(load (string-append (getenv "HOME") "/.config/soji/sojirc.scm"))
+	(setenv "SOJI_DIR" SOJI_DIR)
+	(setenv "SOJI_NOTES_DIR" SOJI_NOTES_DIR))
+      (begin
+	(set! SOJI_DIR (getenv "SOJI_DIR"))
+	(set! SOJI_NOTES_DIR (getenv "SOJI_NOTES_DIR")))))
 
-if [[ $action == 'yn' ]]; then
-  action='yesterday-and-today-eng-notebook'
-elif [[ $action == 'week' ]]; then
-  action='note week'
-elif [[ $action == '' ]]; then
-  action='note log'
-fi
+(define (bind_global_config)
+  (define SOJI_DIR (getenv "SOJI_DIR"))
+  (define SOJI_NOTES_DIR  (getenv "SOJI_NOTES_DIR"))
+  '())
+  
+(define (default-args lst)
+  (if (= (length lst) 1) (append lst '("note" "log")) lst))
 
-$SOJI_DIR/subcommands/$action "${@:2}"
+(define (quote-string str)
+  (string-append "'" str "'"))
+
+(define (quote-args lst)
+  (map quote-string lst))
+
+
+(define (main args)
+  (load_env_vars)
+  (bind_global_config)
+  (system
+   (string-append SOJI_DIR "/subcommands/"
+		  (string-join
+		   (list-tail
+		    (quote-args 
+		     (default-args args))
+		    1)))))

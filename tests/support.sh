@@ -10,7 +10,7 @@ function reset_test_env {
   fi
 }
 
-#setup() {
+#0setup() {
 #  reset_test_env
 #}
 
