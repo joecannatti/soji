@@ -8,7 +8,7 @@ prepare_for_tests: copy_scm_files_to_bins
 	rm -f tests/notes/*
 
 install: copy_scm_files_to_bins
-	mkdir -p ~/.config/soji
+	mkdir -p ~/.config/soji/notes
 	cp ./soji ~/.config/soji/soji
 	cp -r subcommands ~/.config/soji/
 	>~/.config/soji/sojirc
