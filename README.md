@@ -19,6 +19,18 @@ These include:
 
 ### Installation
 
+soji requires the Guile programming language to be installed
+
+Fedora
+```
+sudo dnf install guile
+```
+
+Ubuntu
+```
+sudo apt install guile
+```
+
 _NOTE: I am developing `soji` on Ubuntu and am currently unsure that it works on any other platform. Please feel free to lend a hand getting it working on your Platform :)_
 
 ```
