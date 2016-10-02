@@ -54,6 +54,8 @@ The standard prompt setup is built into soji. You just need to add to you `.bash
 PROMPT_COMMAND='PS1="`soji header`"'
 ```
 
+I use a very up to date version of GNU `bash`. I do not know if this will work with other shells, including `zsh`
+
 Soji may be usable without this step, but I've not really tried. You could not have the info in your prompt and just run the commands `soji` and `soji status` to see what's going on.
 
 ### The note taking system
