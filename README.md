@@ -65,7 +65,7 @@ A special note file is created for each day called the the `engineering-log`. It
 Beginning any soji activity adds an entry into this file in the form of
 
 ```
-### start -- Write Soji README.md -- 01:15PM
+** start -- Write Soji README.md -- 01:15PM
 ```
 
 You are free to add your own notes in that file in between soji's log entries. 
