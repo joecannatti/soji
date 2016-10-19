@@ -9,7 +9,7 @@ if [ "$os_x" != "" ]; then
 else
     cp ./soji_for_linux ./soji
     cp ./soji_for_linux.scm ./soji.scm
-    cp ./Makefile_linux ./Makefile
+    cp ./Makefile_for_linux ./Makefile
 fi
 
 sudo make install
