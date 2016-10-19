@@ -17,7 +17,7 @@ install: copy_scm_files_to_bins
 	echo "export SOJI_NOTES_DIR=~/.config/soji/notes" >> ~/.config/soji/sojirc
 	echo "(define SOJI_DIR (string-append (getenv \"HOME\") \"/.config/soji\"))" >> ~/.config/soji/sojirc.scm
 	echo "(define SOJI_NOTES_DIR (string-append (getenv \"HOME\") \"/.config/soji/notes\"))" >> ~/.config/soji/sojirc.scm
-	sudo ln -fs ~/.config/soji/soji /usr/bin/soji
+	ln -fs ~/.config/soji/soji /usr/local/bin/soji
 
 
 copy_scm_files_to_bins:

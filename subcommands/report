@@ -11,14 +11,26 @@ if [ -e $todays_note_file ]; then
   cat $todays_note_file | grep "** start"
   echo
 
-  dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** lunch" | awk -F'-' '{print $NF}'`
-  formula=(`date +%s --date "$(echo $dates | awk '{print $2}')"`-`date +%s --date "$(echo $dates | awk '{print $1}')"`)/60
-  lunch_min=`echo "$formula" | bc`
-  echo "You took a $lunch_min min Lunch at $(echo $dates | awk '{print $1}')"
+  os_x=`uname -a | fgrep -i 'Darwin'`
+  
+  if [ "$os_x" != "" ]; then
+    dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** lunch" | awk -F'-' '{print $NF}'`
+    formula=(`date -jf '%I:%M%p' "$(echo $dates | awk '{print $2}')" +'%s'`-`date -jf '%I:%M%p' "$(echo $dates | awk '{print $1}')" +'%s'`)/60
+    lunch_min=`echo "$formula" | bc`
+    echo "You took a $lunch_min min Lunch at $(echo $dates | awk '{print $1}')"
 
-  dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** meditat" | awk -F'-' '{print $NF}'`
-  formula=(`date +%s --date "$(echo $dates | awk '{print $2}')"`-`date +%s --date "$(echo $dates | awk '{print $1}')"`)/60
-  med_min=`echo "$formula" | bc`
+    dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** meditat" | awk -F'-' '{print $NF}'`
+    formula=(`date -jf '%I:%M%p' "$(echo $dates | awk '{print $2}')" +'%s'`-`date -jf '%I:%M%p' "$(echo $dates | awk '{print $1}')" +'%s'`)/60
+    med_min=`echo "$formula" | bc`
   echo "Meditated for $med_min min at $(echo $dates | awk '{print $1}')"
-fi
+  else
+    dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** lunch" | awk -F'-' '{print $NF}'`
+    formula=(`date +%s --date "$(echo $dates | awk '{print $2}')"`-`date +%s --date "$(echo $dates | awk '{print $1}')"`)/60
+    lunch_min=`echo "$formula" | bc`
+    echo "You took a $lunch_min min Lunch at $(echo $dates | awk '{print $1}')"
 
+    dates=`cat $todays_note_file | sed '/^$/ d' | grep -i -A 1 "** meditat" | awk -F'-' '{print $NF}'`
+    formula=(`date +%s --date "$(echo $dates | awk '{print $2}')"`-`date +%s --date "$(echo $dates | awk '{print $1}')"`)/60
+    med_min=`echo "$formula" | bc`
+    echo "Meditated for $med_min min at $(echo $dates | awk '{print $1}')"
+  fi

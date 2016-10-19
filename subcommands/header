@@ -23,24 +23,24 @@ fi
 lunch=""
 cat $todays_note_file 2> /dev/null | grep -i "** lunch" &> /dev/null
 if [[ $? == 0 ]]; then
-  lunch="$WHITE lunch $GREEN✓"
+  lunch="$WHITE lunch $GREEN[✔]"
 else
-  lunch="$WHITE lunch $RED✗"
+  lunch="$WHITE lunch $RED[✘]"
 fi
 
 meditation=""
 cat $todays_note_file 2> /dev/null  | grep -i "** Meditation" &> /dev/null
 if [[ $? == 0 ]]; then
-  meditation="$WHITE meditation $GREEN✓"
+  meditation="$WHITE meditation $GREEN[✔]"
 else
-  meditation="$WHITE meditation $RED✗"
+  meditation="$WHITE meditation $RED[✘]"
 fi
 
 journal=""
 if [ -e `soji note-path journal` ]; then
-  journal="$WHITE journal $GREEN✓"
+  journal="$WHITE journal $GREEN[✔]"
 else
-  journal="$WHITE journal $RED✗"
+  journal="$WHITE journal $RED[✘]"
 fi
 
 meeting_count=`cat $todays_note_file 2> /dev/null | grep -i "** meeting" | wc -l`

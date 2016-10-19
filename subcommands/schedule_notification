@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 message=$1
-min_from_now=$2
-crontab -l | { cat; echo "`date +'%M %H %d %m *' --date \"+$min_from_now min\"` soji notify '$message'"; } | crontab -
+
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+    M=M
+    min_from_now=$2$M
+else
+    min_frow_now=$2
+fi
+
+
+crontab -l | { cat; echo "`date -v +$min_from_now +'%M %H %d %m *'` /usr/local/bin/soji notify '$message'"; } | crontab -
