@@ -8,4 +8,4 @@ before_install:
   - sudo apt-get install -qq -y guile-2.0-dev
   
 script:
-  - make test
+  - sudo sh install_soji
