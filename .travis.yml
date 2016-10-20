@@ -11,11 +11,11 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew brightness; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew bats; fi
   
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] then sudo add-apt-repository ppa:duggan/bats --yes; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] then sudo apt-get update -qq; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] then sudo apt-get install -qq bats; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] then sudo apt-get update -qq; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] then sudo apt-get install -qq -y guile-2.0-dev; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:duggan/bats --yes; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq bats; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq -y guile-2.0-dev; fi
   
 script:
   - sudo sh install_soji
