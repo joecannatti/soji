@@ -5,6 +5,7 @@ days_ago=${2:-0}
 
 os_x=`uname -a | fgrep -i 'Darwin'`
 if [ "$os_x" != "" ]; then
+  D="d"
     if [[ $type == 'log' ]]; then
       echo -n $SOJI_NOTES_DIR/engineering-log-`date -v +$days_ago$D +%Y-%m-%d`.org
     elif [[ $type == 'ts' ]]; then
