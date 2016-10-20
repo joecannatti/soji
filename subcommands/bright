@@ -8,7 +8,7 @@ if [ "$os_x" != "" ]; then
     /usr/local/bin/brightness -m 0.8
 else
     for disp in `DISPLAY=:0 xrandr --verbose | grep '(normal' | cut -d' ' -f 1`; do
-    DISPLAY=:0 xrandr --output $disp --display ":0" --brightness 1 || true
+        DISPLAY=:0 xrandr --output $disp --display ":0" --brightness 1 || true
     done
 fi
 
