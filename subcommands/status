@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+os_x=`uname -a | fgrep -i 'Darwin'`
 if [ "$os_x" != "" ]; then
     if [ -e $(soji note-path log) ]; then
-        task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk -FS=, '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
+        task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk  -F=NULL, '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
         task=`echo $task | xargs`
         start_time=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/.*-- //'`
         if [ "$start_time" != "" ]; then
@@ -12,6 +13,7 @@ if [ "$os_x" != "" ]; then
         fi
     fi
 else
+    echo "Linux"
     if [ -e $(soji note-path log) ]; then
         task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
         task=`echo $task | xargs`
