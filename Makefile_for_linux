@@ -24,4 +24,3 @@ copy_scm_files_to_bins:
 	cp soji.scm soji
 
 clean: prepare_for_tests
-

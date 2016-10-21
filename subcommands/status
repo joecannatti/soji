@@ -1,12 +1,27 @@
 #!/usr/bin/env bash
 
-if [ -e $(soji note-path log) ]; then
-  task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
-  task=`echo $task | xargs`
-  start_time=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/.*-- //'`
-  if [ "$start_time" != "" ]; then
-    seconds=`expr $(date +'%s') - $(date +'%s' --date $start_time)`
-    minutes=`expr $seconds / 60`
-    echo "$task -- $minutes min"
-  fi
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+    if [ -e $(soji note-path log) ]; then
+        task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk  -F=NULL, '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
+        task=`echo $task | xargs`
+        start_time=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/.*-- //'`
+        if [ "$start_time" != "" ]; then
+            seconds=`expr $(date +'%s') - $(date -jf '%I:%M%p' $start_time +'%s')`
+            minutes=`expr $seconds / 60`
+            echo "$task -- $minutes min"
+        fi
+    fi
+else
+    echo "Linux"
+    if [ -e $(soji note-path log) ]; then
+        task=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/[^-]*-- //' | sed 's/\(.*\) --.*/\1/' |  awk -F '' '{if (NF > 20) {print substr($0, 0, 21)"..."} else print $0}'`
+        task=`echo $task | xargs`
+        start_time=`cat $(soji note-path log) | egrep "^\*\* (start|break|lunch|meditation|meeting)" | tail -1 | sed 's/.*-- //'`
+        if [ "$start_time" != "" ]; then
+            seconds=`expr $(date +'%s') - $(date +'%s' --date $start_time)`
+            minutes=`expr $seconds / 60`
+            echo "$task -- $minutes min"
+        fi
+    fi
 fi

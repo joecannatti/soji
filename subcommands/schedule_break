@@ -1,2 +1,8 @@
 #!/usr/bin/env bash
-crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+25 min'` soji break"; } | crontab -
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+    crontab -l | { cat; echo "`date -v +25M +'%M %H %d %m *'` /usr/local/bin/soji break"; } | crontab -
+else
+    crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+25 min'` soji break"; } | crontab -
+fi
+

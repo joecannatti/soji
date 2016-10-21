@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+    cp ./soji_for_os_x ./soji
+    cp ./soji_for_os_x.scm ./soji.scm
+    cp ./Makefile_for_os_x ./Makefile
+else
+    cp ./soji_for_linux ./soji
+    cp ./soji_for_linux.scm ./soji.scm
+    cp ./Makefile_for_linux ./Makefile
+fi
+
+sudo make install

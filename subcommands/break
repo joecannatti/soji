@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
-soji dim
-soji log "break" "break"
-crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` soji bright"; } | crontab -
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+    /usr/local/bin/soji dim
+    /usr/local/bin/soji log "break" "break"
+    crontab -l | { cat; echo "`date -v +5M +'%M %H %d %m *'` /usr/local/bin/soji bright"; } | crontab -
+else
+    soji dim
+    soji log "break" "break"
+    crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` soji bright"; } | crontab -
+fi
+
+
+

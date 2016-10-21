@@ -3,15 +3,37 @@
 type=${1:-ts}
 days_ago=${2:-0}
 
-if [[ $type == 'log' ]]; then
-  echo -n $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$days_ago days ago"`.org
-elif [[ $type == 'ts' ]]; then
-  echo -n $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.org
-elif [[ $type == 'journal' ]]; then
-  echo -n $SOJI_NOTES_DIR/journal-`date +%Y-%m-%d`.org
-elif [[ $type == 'week' ]]; then
-  day_of_week=`date +%u`
-  for i in `seq 0 $(expr $day_of_week - 1)`; do echo $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$i days ago"`.org; done | xargs
+os_x=`uname -a | fgrep -i 'Darwin'`
+if [ "$os_x" != "" ]; then
+  D="d"
+    if [[ $type == 'log' ]]; then
+      echo -n $SOJI_NOTES_DIR/engineering-log-`date -v +$days_ago$D +%Y-%m-%d`.org
+    elif [[ $type == 'ts' ]]; then
+      echo -n $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.org
+    elif [[ $type == 'journal' ]]; then
+      echo -n $SOJI_NOTES_DIR/journal-`date +%Y-%m-%d`.org
+    elif [[ $type == 'week' ]]; then
+      day_of_week=`date +%u`
+      for i in `seq 0 $(expr $day_of_week - 1)`; do echo $SOJI_NOTES_DIR/engineering-log-`date -v $i$D +%Y-%m-%d`.org; done | xargs
+    else
+      echo -n $SOJI_NOTES_DIR/"$1".org
+    fi
 else
-  echo -n $SOJI_NOTES_DIR/"$1".org
+    if [[ $type == 'log' ]]; then
+      echo -n $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$days_ago days ago"`.org
+    elif [[ $type == 'ts' ]]; then
+      echo -n $SOJI_NOTES_DIR/note-`date +%Y-%m-%d-at-%H:%M`.org
+    elif [[ $type == 'journal' ]]; then
+      echo -n $SOJI_NOTES_DIR/journal-`date +%Y-%m-%d`.org
+    elif [[ $type == 'week' ]]; then
+      day_of_week=`date +%u`
+      for i in `seq 0 $(expr $day_of_week - 1)`; do echo $SOJI_NOTES_DIR/engineering-log-`date +%Y-%m-%d --date "$i days ago"`.org; done | xargs
+    else
+      echo -n $SOJI_NOTES_DIR/"$1".org
+    fi
 fi
+
+
+
+
+
