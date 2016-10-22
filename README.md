@@ -48,7 +48,7 @@ _NOTE: I am developing `soji` on Ubuntu and am currently unsure that it works on
 ```
 git clone git@github.com:joecannatti/soji.git
 cd soji
-sudo make install
+sudo sh install_soji
 ```
 
 ### Setup your prompt
