@@ -18,4 +18,4 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq -y guile-2.0-dev; fi
   
 script:
-  - sudo sh install_soji
+  - sudo make install

@@ -1,3 +1,10 @@
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+	PLATFORM = os_x
+else
+	PLATFORM = linux
+endif
+
 PREFIX = /usr/local
 
 all: test
@@ -23,6 +30,8 @@ install: copy_scm_files_to_bins
 
 
 copy_scm_files_to_bins:
+	cp soji_for_$(PLATFORM) soji
+	cp soji_for_$(PLATFORM).scm soji.scm
 	cp soji.scm soji
 
 clean: prepare_for_tests
