@@ -1,10 +1,3 @@
-OS := $(shell uname)
-ifeq ($(OS),Darwin)
-	PLATFORM = os_x
-else
-	PLATFORM = linux
-endif
-
 PREFIX = /usr/local
 
 all: test
@@ -12,11 +5,11 @@ all: test
 test: prepare_for_tests
 	SOJI_DIR=`pwd` PATH="`pwd`:$$PATH" SOJI_NOTES_DIR=`pwd`/tests/notes bats tests/*.bats
 
-prepare_for_tests: copy_scm_files_to_bins
+prepare_for_tests: 
 	mkdir -p tests/notes
 	rm -f tests/notes/*
 
-install: copy_scm_files_to_bins
+install:
 	mkdir -p ~/.config/soji/notes
 	cp ./soji ~/.config/soji/soji
 	cp -r subcommands ~/.config/soji/
@@ -28,11 +21,6 @@ install: copy_scm_files_to_bins
 	echo "(define SOJI_NOTES_DIR (string-append (getenv \"HOME\") \"/.config/soji/notes\"))" >> ~/.config/soji/sojirc.scm
 	ln -fs ~/.config/soji/soji $(PREFIX)/bin/soji
 
-
-copy_scm_files_to_bins:
-	cp soji_for_$(PLATFORM) soji
-	cp soji_for_$(PLATFORM).scm soji.scm
-	cp soji.scm soji
 
 clean: prepare_for_tests
 
