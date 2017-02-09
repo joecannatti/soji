@@ -7,7 +7,7 @@ fi
 os_x=`uname -a | fgrep -i 'Darwin'`
 
 if [ "$os_x" != "" ]; then
-    /usr/local/bin/terminal-notifier -message "$1" -sound "Pop"
+    terminal-notifier -message "$1" -sound "Pop"
 else
     echo $1
     notify-send -i $SOJI_DIR/zen.jpeg "$1"
