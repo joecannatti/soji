@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+crontab -l | grep -v "soji" | crontab -
 echo -e "\n** $1 -- $2 -- `date +'%I:%M%p'`" >> "`soji note-path log`"
