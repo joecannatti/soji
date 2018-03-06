@@ -10,5 +10,4 @@ else
     crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` soji bright"; } | crontab -
 fi
 
-
-
+soji callback "break"

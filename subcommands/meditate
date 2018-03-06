@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 soji log "meditation" "meditation"
+soji callback "meditation"

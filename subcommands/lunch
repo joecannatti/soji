@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 soji log "lunch" "lunch"
+soji callback "lunch"
