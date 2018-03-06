@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "$0 <name-of-event>"
+    exit 1 
+fi
+
+CALLBACKS_HOME="${HOME}/.config/soji/callbacks/${1}" 
+shift
+
+if [ -d $CALLBACKS_HOME ]; then
+    for script in $CALLBACKS_HOME/*; do
+       $script $*
+    done
+fi
