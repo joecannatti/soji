@@ -6,7 +6,7 @@ if [ "$os_x" != "" ]; then
     M=M
     min_from_now=$2$M
     #echo "`date -v +$min_from_now +'%M %H %d %m *'` soji notify '$message'"
-    crontab -l | { cat; echo "`date -v +$min_from_now +'%M %H %d %m *'` soji notify '$message'"; } | crontab -
+    crontab -l | { cat; echo "`date -v +$min_from_now +'%M %H %d %m *'` env PATH="${PATH}" soji notify '$message'"; } | crontab -
 else
     min_frow_now=$2
     crontab -l | { cat; echo "`date +'%M %H %d %m *' --date \"+$min_from_now min\"` soji notify '$message'"; } | crontab -
