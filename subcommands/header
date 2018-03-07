@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 #prompt
 RED="\[\033[1;31m\]"
 YELLOW="\[\033[1;33m\]"
@@ -46,11 +44,4 @@ fi
 meeting_count=`cat $todays_note_file 2> /dev/null | grep -i "** meeting" | wc -l`
 meetings="$WHITE meetings $GREEN $meeting_count"
 
-#from Gary Bernhart
-gitbranch=""
-ref="$(git branch 2> /dev/null | sed -n "/*/ p" | awk '{ print $2 }')"
-if [ -n "$ref" ]; then
-  gitbranch="("${ref#refs/heads/}")"
-fi  
-
-echo "\n$journal $meditation $lunch $poms $meetings\n$RED \$(soji status) $YELLOW[\@] $RED\W $GREEN $gitbranch $RED$ $NOCOLOR"
+echo "$journal $meditation $lunch $poms $meetings"
