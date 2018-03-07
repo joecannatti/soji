@@ -5,7 +5,7 @@ soji log "break" "break"
 
 os_x=`uname -a | fgrep -i 'Darwin'`
 if [ "$os_x" != "" ]; then
-    crontab -l | { cat; echo "`date -v +5M +'%M %H %d %m *'` soji bright"; } | crontab -
+    crontab -l | { cat; echo "`date -v +5M +'%M %H %d %m *'` env PATH="${PATH}" soji bright"; } | crontab -
 else
     crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+5 min'` soji bright"; } | crontab -
 fi
