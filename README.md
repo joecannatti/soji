@@ -58,7 +58,7 @@ Soji is design to interact with you primarily through your command prompt (as pi
 The standard prompt setup is built into soji. You just need to add to you `.bashrc` or `.bash_profile`
 
 ```
-PROMPT_COMMAND='PS1="`soji header`"'
+PROMPT_COMMAND='PS1="`soji prompt`"'
 ```
 
 I use a very up to date version of GNU `bash`. I do not know if this will work with other shells, including `zsh`

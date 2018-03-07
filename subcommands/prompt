@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+#prompt
+RED="\[\033[1;31m\]"
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[1;32m\]"
+NOCOLOR="\[\033[1;0m\]"
+
+#from Gary Bernhart
+gitbranch=""
+ref="$(git branch 2> /dev/null | sed -n "/*/ p" | awk '{ print $2 }')"
+if [ -n "$ref" ]; then
+  gitbranch="("${ref#refs/heads/}")"
+fi  
+
+echo "\n$(soji header)\n$RED \$(soji status) $YELLOW[\@] $RED\W $GREEN $gitbranch $RED$ $NOCOLOR"
