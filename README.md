@@ -32,15 +32,11 @@ sudo apt install guile
 ```
 
 Mac
-```
-brew install guile
-```
 
-Mac also requires [brightness](https://github.com/nriley/brightness) and [terminal-notifier](https://github.com/julienXX/terminal-notifier). They can be installed with
+You are also required to install [brightness](https://github.com/nriley/brightness) and [terminal-notifier](https://github.com/julienXX/terminal-notifier). 
 
 ```
-brew install brightness
-brew install terminal-notifier
+brew install guile brightness terminal-notifier
 ```
 
 _NOTE: I am developing `soji` on Ubuntu and am currently unsure that it works on any other platform. Please feel free to lend a hand getting it working on your Platform :)_
