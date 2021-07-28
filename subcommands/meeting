@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
 soji log "meeting" "$1"
+soji callback "meeting"
