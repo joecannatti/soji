@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 os_x=`uname -a | fgrep -i 'Darwin'`
 if [ "$os_x" != "" ]; then
-    crontab -l | { cat; echo "`date -v +25M +'%M %H %d %m *'` soji break"; } | crontab -
+    crontab -l | { cat; echo "`date -v +25M +'%M %H %d %m *'` env PATH="${PATH}" soji break"; } | crontab -
 else
     crontab -l | { cat; echo "`date +'%M %H %d %m *' --date '+25 min'` soji break"; } | crontab -
 fi
